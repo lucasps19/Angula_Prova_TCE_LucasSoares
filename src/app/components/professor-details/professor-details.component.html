@@ -1,0 +1,40 @@
+<div style="width: 500px; margin: auto;">
+    <div *ngIf="currentProfessor" class="edit-form">
+      <h4>Professor</h4>
+      <form>
+        <div class="form-group">
+          <label for="title">Nome</label>
+          <input
+            type="text"
+            class="form-control"
+            id="nome"
+            [(ngModel)]="currentProfessor.nome"
+            name="nome"
+          />
+        </div>
+      </form>
+
+  
+      <button class="badge badge-danger mr-2" (click)="deleteProfessor()">
+        Delete
+      </button>
+  
+      <button
+        type="submit"
+        class="badge badge-success"
+        (click)="updateProfessor()"
+      >
+        Update
+      </button>
+      <p></p>
+    </div>
+  
+    <div *ngIf="!currentProfessor">
+      <br />
+      <p>This teacher is not accessible</p>
+    </div>
+
+    <div *ngIf="submitted">
+      <h3>Professor editado com sucesso!</h3>
+    </div>
+  </div>

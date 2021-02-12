@@ -1,0 +1,60 @@
+<div class="list row">
+    <div class="col-md-8">
+      <div class="input-group mb-4">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search by disciplina"
+          [(ngModel)]="disciplina"
+        />
+        <div class="input-group-append">
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            (click)="searchByDisciplina()"
+          >
+            Search
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <a routerLink="/turma-create" class="nav-link">Cadastrar</a>
+    </div>
+    <div class="col-md-6">
+      <h4>Turmas</h4>
+      <ul class="list-group">
+        <li
+          class="list-group-item"
+          *ngFor="let Turma of turma; let i = index"
+          [class.active]="i == currentIndex"
+          (click)="setCurrentTurma(Turma, i)"
+        >
+        {{Turma.disciplina}}
+        <!-- <a class="badge badge-warning" routerLink="estudante/{{Estudante.matricula}}">Edit</a> -->
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-6">
+      <div *ngIf="currentTurma.disciplina">
+        <h4>Disciplina</h4>
+        <div>
+          <label><strong>Disciplina:</strong> <span> {{currentTurma.disciplina}}</span> </label> 
+        </div>
+  
+        <a class="badge badge-warning" routerLink="/turma/{{currentTurma.id}}">
+          Editar
+        </a>
+      </div>
+  
+      <div *ngIf="!currentTurma.disciplina">
+        <br />
+        <p>Por favor selecione uma disciplina</p>
+      </div>
+
+      <div *ngIf="msg!=''">
+        <h3>{{msg}}</h3>
+      </div>
+    </div>
+  </div>
+

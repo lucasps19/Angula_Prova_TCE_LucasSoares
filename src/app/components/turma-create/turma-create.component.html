@@ -1,0 +1,32 @@
+<div style="width: 500px; margin: auto;">
+    <div class="submit-form">
+      <div *ngIf="!submitted">
+        <div class="form-group">
+          <label for="disciplina">Disciplina</label>
+          <input
+            type="text"
+            class="form-control"
+            id="disciplina" 
+            required
+            [(ngModel)]="turma.disciplina"
+            disciplina="disciplina"
+          />
+          <input
+            type="text"
+            class="form-control"
+            id="professorRegistro" 
+            required
+            [(ngModel)]="turma.professorRegistro"
+            professorRegistro="professorRegistro"
+          />
+        </div>
+  
+        <button (click)="createTurma()" class="btn btn-success">Create</button>
+      </div>
+  
+      <div *ngIf="submitted">
+        <h3>Turma criada com sucesso!</h3>
+        <button class="btn btn-success" (click)="newTurma()">New..</button>
+      </div>
+    </div>
+  </div>

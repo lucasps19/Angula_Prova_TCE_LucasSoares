@@ -1,0 +1,48 @@
+<div style="width: 500px; margin: auto;">
+    <div *ngIf="currentTurma" class="edit-form">
+      <h4>Turmar</h4>
+      <form>
+        <div class="form-group">
+          <label for="title">Disciplina</label>
+          <input
+            type="text"
+            class="form-control"
+            id="disciplina"
+            [(ngModel)]="currentTurma.disciplina"
+            name="disciplina"
+          />
+          <label for="title">Professor</label>
+          <input
+            type="text"
+            class="form-control"
+            id="professorRegistro"
+            [(ngModel)]="currentTurma.professorRegistro"
+            name="professorRegistro"
+          />
+        </div>
+      </form>
+
+  
+      <button class="badge badge-danger mr-2" (click)="deleteTurma()">
+        Delete
+      </button>
+  
+      <button
+        type="submit"
+        class="badge badge-success"
+        (click)="updateTurma()"
+      >
+        Update
+      </button>
+      <p></p>
+    </div>
+  
+    <div *ngIf="!currentTurma">
+      <br />
+      <p>This teacher is not accessible</p>
+    </div>
+
+    <div *ngIf="submitted">
+      <h3>Turma editada com sucesso!</h3>
+    </div>
+  </div>

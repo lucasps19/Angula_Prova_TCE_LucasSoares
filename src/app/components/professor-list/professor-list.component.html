@@ -1,0 +1,59 @@
+<div class="list row">
+    <div class="col-md-8">
+      <div class="input-group mb-4">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search by nome"
+          [(ngModel)]="nome"
+        />
+        <div class="input-group-append">
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            (click)="searchByNome()"
+          >
+            Search
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <a routerLink="/professor-create" class="nav-link">Cadastrar</a>
+    </div>
+    <div class="col-md-6">
+      <h4>Professores</h4>
+      <ul class="list-group">
+        <li
+          class="list-group-item"
+          *ngFor="let Professor of professor; let i = index"
+          [class.active]="i == currentIndex"
+          (click)="setCurrentProfessor(Professor, i)"
+        >
+        {{Professor.nome}}
+        <!-- <a class="badge badge-warning" routerLink="estudante/{{Estudante.matricula}}">Edit</a> -->
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-6">
+      <div *ngIf="currentProfessor.nome">
+        <h4>Professor</h4>
+        <div>
+          <label><strong>Nome:</strong> <span> {{currentProfessor.nome}}</span> </label> 
+        </div>
+  
+        <a class="badge badge-warning" routerLink="/professor/{{currentProfessor.registro}}">
+          Editar
+        </a>
+      </div>
+  
+      <div *ngIf="!currentProfessor.nome">
+        <br />
+        <p>Por favor click em um professor</p>
+      </div>
+
+      <div *ngIf="msg!=''">
+        <h3>{{msg}}</h3>
+      </div>
+    </div>
+  </div>
